@@ -1,0 +1,93 @@
+body{
+    background-color: #536fa8;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.header{
+    color: white;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.instruction{
+    color: white;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.add-list-container{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+}
+
+.item-text{
+    width: 16%;
+    margin: .2em;
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #1e3156;
+    padding: 0 0.5em;
+}
+
+input[type=text]:focus{
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid #1e3156;
+    outline: none;
+}
+
+.item-text::placeholder{
+    color: white;
+    opacity: 0.6;
+}
+
+.add-btn{
+    width: 5%;
+    margin: .2em;
+}
+
+.list-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 1.5em;
+}
+
+.added-item{
+    width: 40%;
+    color: white;
+    background-color: #1e3156;
+    align-self: center;
+    margin: .5em;
+    padding: .3em 1em;
+    display: flex;
+    border: 2px solid black;
+}
+
+.added-item-text{
+    width: 64%;;
+}
+
+.added-item-time{
+    width: 30%;
+}
+
+.remove-item-btn{
+    width: 6%;
+    background-color: #536fa8;
+    margin-left: 5px;
+}
+
+.remove-item-btn:hover{
+    cursor: pointer;
+    background-color: white;
+}
+
+
