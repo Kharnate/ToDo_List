@@ -14,6 +14,7 @@ body{
     color: white;
     text-align: center;
     margin-top: 1em;
+    padding: 0 1.5em;
 }
 
 .add-list-container{
@@ -57,7 +58,8 @@ input[type=text]:focus{
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
-    margin-top: 1.5em;
+    margin-top: 1.7em;
+    padding: 1em;
 }
 
 .added-item{
@@ -65,24 +67,34 @@ input[type=text]:focus{
     color: white;
     background-color: #1e3156;
     align-self: center;
-    margin: .5em;
+    margin: 1em;
     padding: .3em 1em;
     display: flex;
     border: 2px solid black;
 }
 
+.draggable{
+    cursor: move;
+}
+
+.draggable.dragging{
+    opacity: .5;
+}
+
 .added-item-text{
-    width: 64%;;
+    width: 55%;
 }
 
 .added-item-time{
-    width: 30%;
+    width: 39%;
 }
 
 .remove-item-btn{
     width: 6%;
+    height: 1%;
     background-color: #536fa8;
     margin-left: 5px;
+    padding: .2em;
 }
 
 .remove-item-btn:hover{
@@ -90,4 +102,54 @@ input[type=text]:focus{
     background-color: white;
 }
 
+@media only screen and (max-width: 1300px) {
+   .added-item{
+       width: 70%;
+   }
+}
 
+@media only screen and (max-width: 825px) {
+    .added-tem{
+        width: 85%;
+    }
+    .remove-item-btn{
+        font-size: .6em;
+    }
+    .item-text{
+        width: 30%;
+    }
+    .add-btn{
+        width: 7%;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .added-item{
+        width: 95%;
+    }
+    .added-item-text{
+        width: 45%;
+    }
+    .added-item-time{
+        width: 49%;
+    }
+    .item-text{
+        width: 50%;
+    }
+    .add-btn{
+        width: 10%;
+    }
+ }
+
+ @media only screen and (max-width: 400px) {
+    .item-text{
+        width: 60%;
+    }
+    .add-btn{
+        width: 15%;
+    }
+    .remove-item-btn{
+        width: 10%;
+    }
+ }

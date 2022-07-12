@@ -1,9 +1,12 @@
 function addItemToList(){
+
     const itemText = document.getElementById("item-text");
     const listContainer = document.getElementById("list-container");
 
     const addedItemContainer = document.createElement('div');
     addedItemContainer.classList.add("added-item");
+    addedItemContainer.classList.add("draggable")
+    addedItemContainer.draggable = true;
 
     let textDiv = document.createElement('div');
     textDiv.classList.add('added-item-text');
@@ -25,6 +28,8 @@ function addItemToList(){
     listContainer.appendChild(addedItemContainer);
 
     removeItems();
+    dragEvent();
+
 }
 
 function getDateAndTime(){
@@ -45,4 +50,46 @@ function removeItems(){
 document.onkeydown = function(e) {
     if(e.key === "Enter")
         addItemToList();
+}
+
+function dragEvent(){
+
+    const draggableList = document.querySelectorAll('.draggable');
+    const listContainer = document.querySelector('.list-container');
+
+    draggableList.forEach(dragItem => {
+        dragItem.addEventListener('dragstart',() => {
+            dragItem.classList.add('dragging');
+        });
+        
+        dragItem.addEventListener('dragend', () => {
+            dragItem.classList.remove('dragging');
+        });
+    });
+
+    listContainer.addEventListener('dragover', e => {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(listContainer, e.clientY);
+        const draggable = document.querySelector('.dragging');
+        if(afterElement == null){
+            listContainer.appendChild(draggable);
+        }else{
+            listContainer.insertBefore(draggable, afterElement);
+        }
+        listContainer.appendChild(draggable);
+    });
+}
+
+function getDragAfterElement(container, y){
+    const draggableElement = [...container.querySelectorAll('.draggable:not(.dragging)')];
+
+    return draggableElement.reduce( (closest, child) =>{
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height /2;
+        if(offset < 0 && offset > closest.offset){
+            return {offset: offset, element: child}
+        }else{
+            return closest;
+        }
+    }, {offset: Number.NEGATIVE_INFINITY}).element;
 }
